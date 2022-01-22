@@ -1,0 +1,94 @@
+@import 'variables.scss';
+
+.nav {
+    width: 250px;
+    height: 100%;
+    background-color: #444c63;
+    position: relative;
+    .logo {
+        background-image: url(img/logo.png);
+        background-size: contain;
+        width: 50px;
+        height: 50px;
+        margin: auto;
+        padding: 25px 0;
+        transform: translate(0, 40%);
+    }
+    ul {
+        padding: 50px 0 0 5%;
+
+        .nav-item {
+            padding: 20px 0 30px 20%;
+            height: 40px;
+            position: relative;
+            // display: flex;
+            // align-items: center;
+            // text-align: center;
+            // display: inline-block;
+            .nav-img {
+                margin-right: 30px;
+                position: absolute;
+                width: 25px;
+                height: 25px;
+                left: 0%;
+                transform: translate(0%, -20%);
+                // display: inline-block;
+                object-fit: contain;
+                // padding-top: 10px;
+                // text-align: center;
+                // background-size: contain!important;
+                // background-position: bottom!important;
+                
+            }
+        }
+        a {
+            text-decoration: none;
+            color: #76819e;
+            font-weight: bold;
+            &:hover {
+                color: $white-color;
+            }
+        }
+    }
+    .storage {
+        position: absolute;
+        padding-left: 10px;
+        bottom: 15%;
+        left: 50%;
+        width: 200px;
+        transform: translate(-50%);
+        h3 {
+            font-weight: bold;
+            color: $white-color;
+            padding: 20px 0;
+            img {
+                padding-left: 50px;
+                object-fit: contain;
+            }
+        }
+        .progress {
+            height: 5px;
+            width: 180px;
+            background: linear-gradient(90deg, $light-blue-color 50%, #363e54 50%);
+        }
+    }
+    .upgrade {
+        position: absolute;
+        bottom: 3%;
+        left: 50%;
+        transform: translate(-50%);
+        
+        // margin: 10px 50px;
+        a {
+            text-decoration: none;
+            white-space: nowrap;
+            border: 1px solid $light-blue-color;
+            padding: 20px 40px;
+            border-radius: 6px;
+            color: $white-color;
+            &:hover {
+                background-color: $light-blue-color;
+            }
+        }
+    }
+}
