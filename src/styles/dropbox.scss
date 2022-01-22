@@ -117,13 +117,14 @@ section {
         }
         .content-section {
             // overflow-y: scroll;
+            background-color: red; //nuimti
             flex-wrap: wrap;
             align-content: flex-start;
             height: inherit;
             .uploaded-img {
                 margin: 5px;
                 position: relative;
-                background-color: lawngreen;
+                background-color: lawngreen; //nuimti
                 max-width: 300px;
                 width: 250px;
                 height: 300px;
