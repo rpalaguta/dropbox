@@ -2,20 +2,19 @@
 
 * {
     box-sizing: border-box;
-    font-family: $regular-font;
+    
     
 }
 body {
+    display: flex;
+    font-family: $regular-font;
     width: 100vw;
     height: 100vh;
+    background-color: $white-color;
     .main-content {
         padding: 20px 30px;
         height: 100%;
-        background-color: lightskyblue; //nuimti
-        // position: relative;
-        // overflow-y: scroll;
-        // overflow: hidden; // <- nuėmus hidden, content matosi, bet height tampa 100vh?
-        // display: inline-block;
+        position: relative;
         &::after {
             content: '';
             position: absolute;
@@ -33,17 +32,16 @@ body {
     }
 }
 // .selected-img {
-//     img {
+//     .img {
 //         position: relative;
-//        &::after {
-//             content: '';
-//             inset: 0;
-//             position: absolute;
-//             background-color: black;
-//             opacity: 0.7;
-//             z-index: 1;
-//             // display: none;
-//         } 
+//     }::after {
+//         content: '';
+//         position: absolute;
+//         inset: 0;
+//         background-color: black;
+//         opacity: .7;
+//         z-index: 5;
+//         // display: none;
 //     }
 // }
 

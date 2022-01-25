@@ -1,0 +1,10 @@
+@import "variables.scss";
+
+.content-section {
+  overflow-y: auto;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  height: calc(100% - 176px);
+  // height: 100%;
+  padding-bottom: 10px;
+}
