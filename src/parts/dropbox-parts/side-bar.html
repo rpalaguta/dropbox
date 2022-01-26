@@ -2,33 +2,33 @@
     <div class="logo"></div>
     <ul class="navigation">
         @@include('nav-item.html', {
-            "title" : "Files",
-            "url" : "img/files.png"
+        "title" : "Files",
+        "url" : "img/files.png"
         })
         @@include('nav-item.html', {
-            "title" : "Photos",
-            "url" : "img/photos.png"
+        "title" : "Photos",
+        "url" : "img/photos.png"
         })
         @@include('nav-item.html', {
-            "title" : "Sharing",
-            "url" : "img/sharing.png"
+        "title" : "Sharing",
+        "url" : "img/sharing.png"
         })
         @@include('nav-item.html', {
-            "title" : "Links",
-            "url" : "img/links.png"
+        "title" : "Links",
+        "url" : "img/links.png"
         })
         @@include('nav-item.html', {
-            "title" : "Events",
-            "url" : "img/events.png"
+        "title" : "Events",
+        "url" : "img/events.png"
         })
         @@include('nav-item.html', {
-            "title" : "Get Started",
-            "url" : "img/get-started.png"
+        "title" : "Get Started",
+        "url" : "img/get-started.png"
         })
     </ul>
     <div class="storage">
-        <h3>50 GB / 100 GB <img src="img/add.png" alt="add" srcset=""></h3>
-        <div class="progress"></div>
+        <h3><span id="capacityVal">50 MB / 100 MB</span> <img src="img/add.png" alt="add" srcset=""></h3>
+        <progress id="capacity" value="0" max="100"></progress>
     </div>
     <div class="upgrade flex justify-center align-end">
         <a href="#"><i style="background-image:url(img/upgrade.png);"></i>Upgrade Account</a>
