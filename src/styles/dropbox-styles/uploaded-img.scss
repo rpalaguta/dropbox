@@ -1,6 +1,6 @@
 @import "variables.scss";
 
-#uploaded-img {
+.uploaded {
   flex: 250px;
   margin: 1px;
   max-width: 300px;
@@ -48,7 +48,7 @@
 
   h2,
   h3 {
-    padding: 10px 0;
+    padding: 10px 0 5px 0;
   }
   h3 {
     color: $gray-text;

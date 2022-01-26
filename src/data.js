@@ -1,4 +1,4 @@
-const data = [
+var data = [
   {
     title: "Sad Clown",
     url: "img/sad_clown.png",
