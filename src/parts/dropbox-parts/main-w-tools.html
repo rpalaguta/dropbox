@@ -1,10 +1,10 @@
 <div class="top-part flex justify-between">
   <input type="text" placeholder="Search..." />
   <div class="user-info flex">
-    <a id="notifications" href="#"
-      ><img src="img/bell.png" alt="notifications" srcset="" />
-      <div class="tool-h-text">Notifications</div></a
-    >
+    <label title="Notifications" for="notifications">
+        <img src="img/bell.png" width="90" height="90" alt="Notifications" />
+    </label>
+    <button id="notifications" style="display: none;"></button>
     <div class="user-name flex">
       <h4>Eddie Lobanovskiy</h4>
       <img src="img/arrow-down.png" alt="more-options" srcset="" />
@@ -16,22 +16,23 @@
 </div>
 <div class="tool-bar flex justify-between w-100">
   <div class="tools flex align-center">
-    <label for="upload">
+    <label title="Upload" for="upload">
         <img src="img/upload_file.png" width="90" height="90" alt="submit" />
-        <div class="tool-h-text">Upload</div></a>
     </label>
-    <input id="upload" type="file" accept="image/png image/jpg image/jpeg" multiple="" style="display: none;"></input>
-    <!-- <a id="new-folder" href="#">
-        <img src="img/newfolder.png" alt="new folder" srcset="" />
-        <div class="tool-h-text new-hover">New Folder</div>
-    </a>
-    <a id="share-folder" href="#"
-      ><img src="img/share_folder.png" alt="share folder" srcset="" />
-      <div class="tool-h-text share-hover">Share Folder</div></a
-    > -->
-    <label for="delete">
+    <input id="upload" type="file" accept="image/*" multiple="" style="display: none;"></input>
+   
+    <label title="New Folder" for="newFolder">
+        <img src="img/newfolder.png" width="90" height="90" alt="New Folder" />
+    </label>
+    <button id="newFolder" style="display: none;"></button>
+
+    <label title="Share Folder" for="shareFolder">
+        <img src="img/share_folder.png" width="90" height="90" alt="Share Folder" />
+    </label>
+    <button id="shareFolder" style="display: none;"></button>
+
+    <label title="Delete selected" for="delete">
         <img src="img/delete.png" width="90" height="90" alt="delete" />
-        <div class="tool-h-text">Delete</div></a>
     </label>
     <button id="delete" style="display: none;"></button>
   </div>

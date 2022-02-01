@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    @@include('parts/head.html')
+  </head>
+  <body>
+    <section class="flex w-100 h-100">
+      @@include('parts/dropbox-parts/side-bar.html')
+      <div class="main-content">
+        <div class="top-part flex justify-between">
+          <input type="text" placeholder="Search..." />
+          <div class="user-info flex">
+            <label title="Notifications" for="notifications">
+              <img src="img/bell.png" width="90" height="90" alt="Notifications" />
+            </label>
+            <button id="notifications" style="display: none"></button>
+            <div class="user-name flex">
+              <h4>Eddie Lobanovskiy</h4>
+              <img src="img/arrow-down.png" alt="more-options" srcset="" />
+            </div>
+          </div>
+        </div>
+        <div class="section-title w-100">
+          <h2 id="section-title">Users</h2>
+        </div>
+        <div class="tool-bar flex w-100 justify-start">
+          <div class="sorting flex justify-around">
+            <a id="sort-name" href="#">Name</a>
+            <a id="sort-size" href="#">Adress</a>
+            <a id="sort-modified" href="#">Registered</a>
+          </div>
+        </div>
+        <div id="content" class="content-section flex w-100"></div>
+      </div>
+    </section>
+    <script type="module" src="users.js"></script>
+  </body>
+</html>

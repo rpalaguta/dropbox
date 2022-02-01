@@ -1,0 +1,16 @@
+@import 'variables.scss';
+
+#content {
+  //   justify-content: center;
+  table {
+    // border-collapse: collapse;
+    border: 1px solid black;
+    margin: 30px auto 0 auto;
+    //   border-spacing: 0;
+    th,
+    td {
+      padding: 10px 20px;
+      border: 1px solid #000;
+    }
+  }
+}

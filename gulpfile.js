@@ -49,16 +49,10 @@ function serve() {
   watch("src/**.html", series(html)).on("change", sync.reload);
   watch("src/**.js", series(script)).on("change", sync.reload);
   watch("src/parts/**.html", series(html)).on("change", sync.reload);
-  watch("src/parts/dropbox-parts/**.html", series(html)).on(
-    "change",
-    sync.reload
-  );
+  watch("src/parts/dropbox-parts/**.html", series(html)).on("change", sync.reload);
   watch("src/img/**.{png,jpg,jpeg}", series(img)).on("change", sync.reload);
   watch("src/styles/**.scss", series(scss)).on("change", sync.reload);
-  watch("src/styles/dropbox-styles/**.scss", series(scss)).on(
-    "change",
-    sync.reload
-  );
+  watch("src/styles/dropbox-styles/**.scss", series(scss)).on("change", sync.reload);
 }
 
 exports.start = series(html, scss, script, img, serve);

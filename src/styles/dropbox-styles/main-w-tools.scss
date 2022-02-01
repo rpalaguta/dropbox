@@ -1,8 +1,8 @@
-@import "variables.scss";
+@import 'variables.scss';
 
 .top-part {
   padding: 20px 0;
-  input[type="text"] {
+  input[type='text'] {
     text-decoration: none;
     border: 0;
     font-size: 20px;
@@ -10,34 +10,12 @@
   .user-info {
     width: 230px;
     justify-content: space-between;
-    a {
-      margin-right: 20px;
-      position: relative;
-      &:hover .tool-h-text {
-        display: block;
-      }
-      .tool-h-text {
-        position: absolute;
-        background-color: $white-color;
-        z-index: 1;
-        font-size: 14px;
-        color: $gray-text;
-        bottom: -25px;
-        left: -32px;
-        padding: 1px 5px;
-        height: 20px;
-        border: 1px solid $gray-text;
-        border-radius: 5px;
-        white-space: nowrap;
-        text-align: center;
-        display: none;
-        pointer-events: none;
-      }
-      img {
-        width: 25px;
-        height: 25px;
-        object-fit: contain;
-      }
+
+    img {
+      cursor: pointer;
+      width: 25px;
+      height: 25px;
+      object-fit: contain;
     }
     .user-name {
       margin-top: auto;
@@ -61,10 +39,11 @@
   }
 }
 .tool-bar {
+  // justify-content: flex-end;
   padding-bottom: 10px;
   position: relative;
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     opacity: 0.5;
     bottom: 0;
@@ -75,34 +54,9 @@
   }
   .tools {
     label {
+      cursor: pointer;
       margin-right: 20px;
       position: relative;
-      &:hover .tool-h-text {
-        display: block;
-      }
-      .tool-h-text {
-        position: absolute;
-        background-color: $white-color;
-        z-index: 1;
-        font-size: 14px;
-        color: $gray-text;
-        bottom: -20px;
-        left: -15px;
-        padding: 1px 5px;
-        height: 20px;
-        border: 1px solid $gray-text;
-        border-radius: 5px;
-        white-space: nowrap;
-        text-align: center;
-        display: none;
-        pointer-events: none;
-      }
-      .new-hover {
-        left: -25px;
-      }
-      .share-hover {
-        left: -35px;
-      }
     }
     img {
       width: 25px;

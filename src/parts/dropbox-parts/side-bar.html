@@ -1,36 +1,21 @@
 <div class="nav">
-    <div class="logo"></div>
-    <ul class="navigation">
-        @@include('nav-item.html', {
-            "title" : "Files",
-            "url" : "img/files.png"
-        })
-        @@include('nav-item.html', {
-            "title" : "Photos",
-            "url" : "img/photos.png"
-        })
-        @@include('nav-item.html', {
-            "title" : "Sharing",
-            "url" : "img/sharing.png"
-        })
-        @@include('nav-item.html', {
-            "title" : "Links",
-            "url" : "img/links.png"
-        })
-        @@include('nav-item.html', {
-            "title" : "Events",
-            "url" : "img/events.png"
-        })
-        @@include('nav-item.html', {
-            "title" : "Get Started",
-            "url" : "img/get-started.png"
-        })
-    </ul>
-    <div class="storage">
-        <h3>50 GB / 100 GB <img src="img/add.png" alt="add" srcset=""></h3>
-        <div class="progress"></div>
-    </div>
-    <div class="upgrade flex justify-center align-end">
-        <a href="#"><i style="background-image:url(img/upgrade.png);"></i>Upgrade Account</a>
-    </div>
+  <div class="logo"></div>
+  <ul class="navigation">
+    @@include('nav-item.html', { "link" : "#", "title" : "Files", "url" : "img/files.png" })
+    @@include('nav-item.html', { "link" : "index.html", "title" : "Photos", "url" :
+    "img/photos.png"}) @@include('nav-item.html', { "link" : "users.html", "title" : "Users", "url"
+    :"img/sharing.png" }) @@include('nav-item.html', { "link" : "#", "title" : "Links", "url"
+    :"img/links.png" }) @@include('nav-item.html', { "link" : "#", "title" : "Events", "url"
+    :"img/events.png" }) @@include('nav-item.html', { "link" : "#", "title" : "Get Started", "url"
+    :"img/get-started.png" })
+  </ul>
+  <div class="storage">
+    <h3>
+      <span id="capacity"> Reload the page </span><img src="img/add.png" alt="add" srcset="" />
+    </h3>
+    <progress id="capValue" value="0" max="100"></progress>
+  </div>
+  <div class="upgrade flex justify-center align-end">
+    <a href="#"><i style="background-image: url(img/upgrade.png)"></i>Upgrade Account</a>
+  </div>
 </div>
