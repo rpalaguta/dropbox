@@ -57,28 +57,82 @@ function renderTable(arr) {
   heading_3.innerHTML = 'User name';
   let heading_4 = document.createElement('th');
   heading_4.innerHTML = 'Email';
+  let heading_5 = document.createElement('th');
+  heading_5.innerHTML = 'Actions';
   row_1.appendChild(heading_1);
   row_1.appendChild(heading_2);
   row_1.appendChild(heading_3);
   row_1.appendChild(heading_4);
+  row_1.appendChild(heading_5);
   thead.appendChild(row_1);
   table.appendChild(thead);
   table.appendChild(tbody);
   arr.forEach((element, id) => {
     const row = document.createElement('tr');
     table.appendChild(row);
-    let number = document.createElement('td');
+    const number = document.createElement('td');
     number.innerHTML = `${element.id}`;
     row.appendChild(number);
-    let name = document.createElement('td');
+    const name = document.createElement('td');
     name.innerHTML = `${element.name}`;
     row.appendChild(name);
-    let userName = document.createElement('td');
+    const userName = document.createElement('td');
     userName.innerHTML = `${element.username}`;
     row.appendChild(userName);
-    let email = document.createElement('td');
+    const email = document.createElement('td');
     email.innerHTML = `${element.email}`;
     row.appendChild(email);
+    const actions = document.createElement('td');
+
+    const iconEye = document.createElement('i');
+    iconEye.setAttribute('class', 'fa fa-eye');
+    const iconEdit = document.createElement('i');
+    iconEdit.setAttribute('class', 'fa fa-pencil-square-o');
+    const iconPlus = document.createElement('i');
+    iconPlus.setAttribute('class', 'fa fa-plus');
+    const iconDelete = document.createElement('i');
+    iconDelete.setAttribute('class', 'fa fa-trash');
+
+    iconEye.addEventListener('click', function () {
+      document.getElementById('popup').style.display = 'flex';
+      viewUser(element.id);
+    });
+    iconEdit.addEventListener('click', function () {
+      document.getElementById('popup').style.display = 'flex';
+      editUser(element.id);
+    });
+    iconPlus.addEventListener('click', function () {
+      document.getElementById('popup').style.display = 'flex';
+      addUser(element.id);
+    });
+    iconDelete.addEventListener('click', function () {
+      deleteUser(element.id);
+    });
+
+    actions.appendChild(iconEye);
+    actions.appendChild(iconEdit);
+    actions.appendChild(iconPlus);
+    actions.appendChild(iconDelete);
+    row.appendChild(actions);
   });
   document.getElementById('content').appendChild(table);
 }
+
+function viewUser(id) {
+  console.log('VIEW: ', id);
+  // Pakrauna duomenis pagal user id
+  // Render user data
+}
+function editUser(id) {
+  console.log('EDIT: ', id);
+}
+function addUser(id) {
+  console.log('ADD: ', id);
+}
+function deleteUser(id) {
+  console.log('DELETE: ', id);
+}
+
+document.getElementById('closePopup').addEventListener('click', function () {
+  document.getElementById('popup').style.display = 'none';
+})
