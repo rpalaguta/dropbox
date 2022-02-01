@@ -1,3 +1,4 @@
+import { onSearch } from './event_helpers.js';
 // import { getPosts, deletePost, getPost, createPost, patchPost } from './posts_helpers.js';
 
 // let table = document.createElement('table');
@@ -20,11 +21,25 @@
 //   .then((data) => console.log(data))
 //   .catch((err) => console.log(err));
 
+let data = [];
+
+// function onSearch(e) {
+//   const filteredData = data.filter((item) => {
+//     return item.name.includes(e.target.value)
+//       || item.id.toString().includes(e.target.value)
+//       || item.username.includes(e.target.value)
+//       || item.email.includes(e.target.value)
+//   });
+//   console.log(e.target.value, filteredData);
+//   renderTable(filteredData);
+// }
+
+document.getElementById('search').addEventListener('input', (e) => onSearch(e, data, ['name', 'username', 'email'], renderTable))
+
 async function loadData() {
   const response = await fetch('https://jsonplaceholder.typicode.com/users');
-  const data = await response.json();
+  data = await response.json();
   renderTable(data);
-  console.log(data);
 }
 loadData();
 
