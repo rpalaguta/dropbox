@@ -50,3 +50,12 @@
     color: gray;
   }
 }
+
+.user-data {
+  h6 {
+    font-weight: bold;
+  }
+}
+.user-data > div {
+  margin-bottom: 15px;
+}

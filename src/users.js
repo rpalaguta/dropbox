@@ -1,4 +1,5 @@
 import { onSearch } from './event_helpers.js';
+import { getUsers, getUser, createUser, patchUser, deleteUser } from './users_helpers.js'
 // import { getPosts, deletePost, getPost, createPost, patchPost } from './posts_helpers.js';
 
 // let table = document.createElement('table');
@@ -88,51 +89,94 @@ function renderTable(arr) {
     iconEye.setAttribute('class', 'fa fa-eye');
     const iconEdit = document.createElement('i');
     iconEdit.setAttribute('class', 'fa fa-pencil-square-o');
-    const iconPlus = document.createElement('i');
-    iconPlus.setAttribute('class', 'fa fa-plus');
     const iconDelete = document.createElement('i');
     iconDelete.setAttribute('class', 'fa fa-trash');
 
     iconEye.addEventListener('click', function () {
       document.getElementById('popup').style.display = 'flex';
-      viewUser(element.id);
+      userEvent('view', element.id);
     });
     iconEdit.addEventListener('click', function () {
       document.getElementById('popup').style.display = 'flex';
-      editUser(element.id);
-    });
-    iconPlus.addEventListener('click', function () {
-      document.getElementById('popup').style.display = 'flex';
-      addUser(element.id);
+      userEvent('edit', element.id);
     });
     iconDelete.addEventListener('click', function () {
-      deleteUser(element.id);
+      userEvent('delete', element.id);
     });
 
     actions.appendChild(iconEye);
     actions.appendChild(iconEdit);
-    actions.appendChild(iconPlus);
     actions.appendChild(iconDelete);
     row.appendChild(actions);
   });
   document.getElementById('content').appendChild(table);
 }
 
-function viewUser(id) {
-  console.log('VIEW: ', id);
-  // Pakrauna duomenis pagal user id
-  // Render user data
+function userEvent(type, id) {
+  console.log(type, id);
+  switch (type) {
+    case 'view':
+      getUser(id)
+        .then(res => renderUserData(res))
+      break;
+    case 'edit':
+      break;
+    case 'delete':
+      break;
+    default:
+      break;
+  }
 }
-function editUser(id) {
-  console.log('EDIT: ', id);
-}
-function addUser(id) {
-  console.log('ADD: ', id);
-}
-function deleteUser(id) {
-  console.log('DELETE: ', id);
+
+function renderUserData({
+  id,
+  name,
+  username,
+  email,
+  phone,
+  website,
+  address: {
+    street,
+    suite,
+    city,
+    zipcode,
+  },
+  company: {
+    name: companyName,
+    catchPhrase,
+    bs,
+  }
+}) {
+  document.getElementById('userData').innerHTML = `
+    <div class="user-data">
+      <div>
+        <h6>PERSONAL DATA</h6>
+        <div>ID: ${id}</div>
+        <div>NAME: ${name}</div>
+        <div>USERNAME: ${username}</div>
+        <div>EMAIL: ${email}</div>
+        <div>PHONE: ${phone}</div>
+        <div>WEBSITE: ${website}</div>
+      </div>
+      <div>
+        <h6>ADDRESS</h6>
+        <div>STREET: ${street}</div>
+        <div>SUITE: ${suite}</div>
+        <div>CITY: ${city}</div>
+        <div>ZIPCODE: ${zipcode}</div>
+      </div>
+      <div>
+        <h6>COMPANY</h6>
+        <div>NAME: ${companyName}</div>
+        <div>CATCH PHRASE: ${catchPhrase}</div>
+        <div>BS: ${bs}</div>
+      </div>
+    </div>
+  `;
+
 }
 
 document.getElementById('closePopup').addEventListener('click', function () {
   document.getElementById('popup').style.display = 'none';
+  document.getElementById('userData').innerHTML = '';
 })
