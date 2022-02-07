@@ -1,5 +1,19 @@
-// import data from "./data.js";
+import { getPhotos, getPhoto, patchPhoto, deletePhoto, postPhoto } from "./photos_helper.js";
 
+const photos = await getPhotos();
+console.log({ photos });
+// const photo = await getPhoto(2);
+// console.log({ photo });
+// const updatedPhoto = await patchPhoto(3, { title: 'test5' });
+// console.log({ updatedPhoto });
+// const deletedPhoto = await deletePhoto(4);
+// console.log({ deletedPhoto });
+// const createdPhoto = await postPhoto({
+//   title: "test",
+//   url: "https://via.placeholder.com/600/771796",
+//   size: 124312414
+// });
+// console.log({ createdPhoto });
 // function render() {
 //   for (let arrItem = 0; arrItem < data.length; arrItem++) {
 //     const element = data[arrItem];

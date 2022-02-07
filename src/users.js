@@ -1,45 +1,16 @@
 import { onSearch } from './event_helpers.js';
 import { getUsers, getUser, createUser, patchUser, deleteUser } from './users_helpers.js'
-// import { getPosts, deletePost, getPost, createPost, patchPost } from './posts_helpers.js';
-
-// let table = document.createElement('table');
-// let thead = document.createElement('thead');
-// let tbody = document.createElement('tbody');
-
-// table.appendChild(thead);
-// table.appendChild(tbody);
-
-// document.getElementById('content').appendChild(table);
-// let users = getPosts();
-// console.log(users);
-
-// const API_URL = 'https://jsonplaceholder.typicode.com';
-// function getPosts(id) {
-//   return fetch(`${API_URL}/users/${id}`).then((data) => data.json());
-// }
-
-// getPosts(1)
-//   .then((data) => console.log(data))
-//   .catch((err) => console.log(err));
 
 let data = [];
 
-// function onSearch(e) {
-//   const filteredData = data.filter((item) => {
-//     return item.name.includes(e.target.value)
-//       || item.id.toString().includes(e.target.value)
-//       || item.username.includes(e.target.value)
-//       || item.email.includes(e.target.value)
-//   });
-//   console.log(e.target.value, filteredData);
-//   renderTable(filteredData);
-// }
-
-document.getElementById('search').addEventListener('input', (e) => onSearch(e, data, ['name', 'username', 'email'], renderTable))
+document.getElementById('search').addEventListener('input', (e) => onSearch(e, data, ['name', 'username', 'email'], renderTable));
+document.getElementById('add-user').addEventListener('click', function () {
+  document.getElementById('popup').style.display = 'flex';
+  showUserForm({});
+});
 
 async function loadData() {
-  const response = await fetch('https://jsonplaceholder.typicode.com/users');
-  data = await response.json();
+  data = await getUsers();
   renderTable(data);
 }
 loadData();
@@ -112,20 +83,136 @@ function renderTable(arr) {
   document.getElementById('content').appendChild(table);
 }
 
-function userEvent(type, id) {
-  console.log(type, id);
+async function userEvent(type, id) {
   switch (type) {
     case 'view':
       getUser(id)
         .then(res => renderUserData(res))
       break;
     case 'edit':
+      getUser(id)
+        .then(res => showUserForm(res, true))
       break;
     case 'delete':
+      const confirmRes = confirm('Are you sure to delete this user?');
+      if (confirmRes) {
+        try {
+          await deleteUser(id);
+          data = data.filter(item => item.id !== id);
+          renderTable(data);
+        } catch (error) {
+          console.log(error);
+        }
+      }
       break;
     default:
       break;
   }
+}
+
+
+
+function showUserForm({
+  id,
+  name,
+  username,
+  email,
+  phone,
+  website,
+  address,
+  company,
+},
+  isEditForm,
+) {
+  document.getElementById('userData').innerHTML = `
+    <h4>Personal data</h4>
+    <div class="form-item">
+      <label for="name">Name</label>
+      <input type="text" id="name" value=${isEditForm ? name : ''}>
+    </div>
+    <div class="form-item">
+      <label for="username">Username</label>
+      <input type="text" id="username" value=${isEditForm ? username : ''}>
+    </div>
+    <div class="form-item">
+      <label for="email">Email</label>
+      <input type="email" id="email" value=${isEditForm ? email : ''}>
+    </div>
+    <div class="form-item">
+      <label for="phone">Phone</label>
+      <input type="phone" id="phone" value=${isEditForm ? phone : ''}>
+    </div>
+    <div class="form-item">
+      <label for="website">Website</label>
+      <input type="texts" id="website" value=${isEditForm ? website : ''}>
+    </div>
+    <h4>Address</h4>
+    <address>
+      <div class="form-item">
+        <label for="street">Street</label>
+        <input type="text" id="street" value=${isEditForm ? address?.street : ''}>
+      </div>
+        <div class="form-item">
+          <label for="suite">Suite</label>
+          <input type="text" id="suite" value=${isEditForm ? address?.suite : ''}>
+        </div>
+        <div class="form-item">
+          <label for="city">City</label>
+          <input type="text" id="city" value=${isEditForm ? address?.city : ''}>
+        </div>
+        <div class="form-item">
+          <label for="zipcode">Zipcode</label>
+          <input type="text" id="zipcode" value=${isEditForm ? address?.zipcode : ''}>
+        </div>
+      </address>
+      <h4>Company</h4>
+      <div class="form-item">
+        <label for="companyName">Name</label>
+        <input type="text" id="companyName" value=${isEditForm ? company?.name : ''}>
+      </div>
+      <div class="form-item">
+        <label for="catchPhrase">Catch Phrase</label>
+        <input type="text" id="catchPhrase" value=${isEditForm ? company?.catchPhrase : ''}>
+      </div>
+      <div class="form-item">
+        <label for="bs">BS</label>
+        <input type="text" id="bs" value=${isEditForm ? company?.bs : ''}>
+      </div>
+      <button type="button" id="submitBtn">${isEditForm ? 'Update User' : 'Create User'}</button>
+  `;
+  document.getElementById('submitBtn').addEventListener('click', async function () {
+    const newData = {
+      "name": document.getElementById('name').value,
+      "username": document.getElementById('username').value,
+      "email": document.getElementById('email').value,
+      "address": {
+        "street": document.getElementById('street').value,
+        "suite": document.getElementById('suite').value,
+        "city": document.getElementById('city').value,
+        "zipcode": document.getElementById('zipcode').value,
+        "geo": {
+          "lat": "-37.3159",
+          "lng": "81.1496"
+        }
+      },
+      "phone": document.getElementById('phone').value,
+      "website": document.getElementById('website').value,
+      "company": {
+        "name": document.getElementById('companyName').value,
+        "catchPhrase": document.getElementById('catchPhrase').value,
+        "bs": document.getElementById('bs').value
+      }
+    };
+    if (isEditForm) {
+      const updatedUser = await patchUser(id, newData);
+      data = data.map(item => item.id === id ? updatedUser : item);
+    } else {
+      const createdUser = await createUser(newData);
+      data.unshift(createdUser);
+    }
+    renderTable(data);
+    document.getElementById('popup').style.display = 'none';
+  })
 }
 
 function renderUserData({

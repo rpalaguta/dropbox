@@ -20,5 +20,8 @@
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "axios": "^0.25.0"
+  }
 }

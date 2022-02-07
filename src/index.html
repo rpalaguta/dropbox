@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    @@include('parts/head.html')
-    <title>Dropbox</title>
-  </head>
-  <body class="flex">
-    <section class="flex w-100 h-100">@@include('parts/dropbox.html')</section>
 
-    <script type="module" src="script.js"></script>
-  </body>
+<head>
+  @@include('parts/head.html')
+  <title>Dropbox</title>
+</head>
+
+<body class="flex">
+  <section class="flex w-100 h-100">@@include('parts/dropbox.html')</section>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <script type="module" src="script.js"></script>
+</body>
+
 </html>
