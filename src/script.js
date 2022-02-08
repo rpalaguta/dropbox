@@ -1,22 +1,22 @@
 import { getPhotos, getPhoto, patchPhoto, deletePhoto, postPhoto } from "./photos_helper.js";
 
+const selectedPhotos = [];
 const photos = await getPhotos(100);
 render(photos);
 
 document.getElementById('upload').addEventListener('change', async function () {
   for (let i = 0; i < this.files.length; i++) {
     const file = this.files[i];
-    const data = {
-      albumId: 1,
-      title: file.name,
-      url: URL.createObjectURL(file),
-      size: file.size,
-      date: moment().format('YYYY-MM-DD HH:mm')
-    };
-    const createdItem = await postPhoto(data);
+    const formData = new FormData();
+    formData.append('file', file, file.name);
+    const createdItem = await postPhoto(formData);
     photos.unshift(createdItem);
   }
   render(photos);
+});
+
+document.getElementById('delete').addEventListener('click', function () {
+  console.log(selectedPhotos);
 });
 
 function render(arr) {
@@ -48,11 +48,11 @@ function render(arr) {
 
     imageItem.addEventListener('click', function () {
       checked.classList.toggle('active');
-      if (delList.includes(this.id)) {
-        const indexOf = delList.indexOf(checked.id);
-        delList.splice(indexOf, 1);
+      if (selectedPhotos.includes(this.id)) {
+        const indexOf = selectedPhotos.indexOf(checked.id);
+        selectedPhotos.splice(indexOf, 1);
       } else {
-        delList.push(this.id);
+        selectedPhotos.push(this.id);
       }
     });
   });

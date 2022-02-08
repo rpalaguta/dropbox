@@ -41,7 +41,11 @@ export async function deletePhoto(id, data) {
 
 export async function postPhoto(data) {
   try {
-    const res = await axios.post(`${API_URL}/photos`, data);
+    const res = await axios.post(`${API_URL}/photos`, data, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      }
+    });
     return res.data;
   } catch (e) {
     return e;
