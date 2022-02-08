@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    @@include('parts/head.html')
+  </head>
+  <body>
+    <section class="flex w-100 h-100">
+      @@include('parts/dropbox-parts/side-bar.html')
+      <div class="main-content">
+        <div class="top-part flex justify-between">
+          <input id="search" type="text" placeholder="Search..." />
+          <div class="user-info flex">
+            <label title="Notifications" for="notifications">
+              <img src="img/bell.png" width="90" height="90" alt="Notifications" />
+            </label>
+            <button id="notifications" style="display: none"></button>
+            <div class="user-name flex">
+              <h4>Eddie Lobanovskiy</h4>
+              <img src="img/arrow-down.png" alt="more-options" srcset="" />
+            </div>
+          </div>
+        </div>
+        <div class="section-title w-100">
+          <h2 id="section-title">Files</h2>
+        </div>
+        <div class="tool-bar flex justify-between w-100">
+            <div class="tools flex align-center">
+                <label title="Upload" for="upload">
+                    <img src="img/upload_file.png" width="90" height="90" alt="submit" />
+                </label>
+                <input id="upload" type="file" accept="" multiple="" style="display: none;"></input>
+            
+                <label title="New Folder" for="newFolder">
+                    <img src="img/newfolder.png" width="90" height="90" alt="New Folder" />
+                </label>
+                <button id="newFolder" style="display: none;"></button>
+
+                <label title="Share Folder" for="shareFolder">
+                    <img src="img/share_folder.png" width="90" height="90" alt="Share Folder" />
+                </label>
+                <button id="shareFolder" style="display: none;"></button>
+
+                <label title="Delete selected" for="delete">
+                    <img src="img/delete.png" width="90" height="90" alt="delete" />
+                </label>
+                <button id="delete" style="display: none;"></button>
+            </div>
+            <div class="sorting flex justify-around">
+                <a id="sort-name" href="#">Name</a>
+                <a id="sort-size" href="#">Size</a>
+                <a id="sort-modified" href="#">Modified</a>
+            </div>
+        </div>
+        <div id="content" class="content-section flex w-100"></div>
+      </section>
+      <div id="popup">
+        <div id="popupContent">
+          <i id="closePopup" class="fa fa-times" aria-hidden="true"></i>
+          <div id="userData"></div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="files.js"></script>
+  </body>
+</html>

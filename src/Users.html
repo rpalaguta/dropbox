@@ -8,7 +8,7 @@
       @@include('parts/dropbox-parts/side-bar.html')
       <div class="main-content">
         <div class="top-part flex justify-between">
-          <input type="text" placeholder="Search..." />
+          <input id="search" type="text" placeholder="Search..." />
           <div class="user-info flex">
             <label title="Notifications" for="notifications">
               <img src="img/bell.png" width="90" height="90" alt="Notifications" />
@@ -25,14 +25,18 @@
         </div>
         <div class="tool-bar flex w-100 justify-start">
           <div class="sorting flex justify-around">
-            <a id="sort-name" href="#">Name</a>
-            <a id="sort-size" href="#">Adress</a>
-            <a id="sort-modified" href="#">Registered</a>
+            <a id="addNewUser" href="#">Add New User</a>
           </div>
         </div>
         <div id="content" class="content-section flex w-100"></div>
+      </section>
+      <div id="popup">
+        <div id="popupContent">
+          <i id="closePopup" class="fa fa-times" aria-hidden="true"></i>
+          <div id="userData"></div>
+        </div>
       </div>
-    </section>
+    </div>
     <script type="module" src="users.js"></script>
   </body>
 </html>

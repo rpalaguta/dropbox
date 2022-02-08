@@ -1,4 +1,4 @@
-@import "variables.scss";
+@import 'variables.scss';
 
 .uploaded {
   flex: 250px;
@@ -28,7 +28,7 @@
       height: 200px;
       position: relative;
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         inset: 0;
         background-color: black;
@@ -45,13 +45,14 @@
       }
     }
   }
-
   h2,
   h3 {
     padding: 10px 0 5px 0;
+    // font-size: 16px;
   }
   h3 {
     color: $gray-text;
+    // font-size: 16px;
   }
   h4 {
     color: $gray-text;
