@@ -1,22 +1,11 @@
 // CRUD = Create Read Update Delete
 
-const API_URL = 'http://localhost:3000';
-
-// export function getPhotosAsync() {
-//   return new Promise(async (resolve, reject) => {
-//     try {
-//       const data = await fetch(`${API_URL}/photos`);
-//       return resolve(data.json());
-//     } catch (error) {
-//       reject(error);
-//     }
-//   });
-// }
+const API_URL = 'http://localhost:5000';
 
 // Read
-export async function getPhotos() {
+export async function getPhotos(limit) {
   try {
-    const res = await axios.get(`${API_URL}/photos?limit=100`);
+    const res = await axios.get(`${API_URL}/photos?limit=${limit}`);
     return res.data;
   } catch (e) {
     return e;
@@ -31,7 +20,6 @@ export async function getPhoto(id) {
     return e;
   }
 }
-
 
 export async function patchPhoto(id, data) {
   try {
@@ -59,47 +47,3 @@ export async function postPhoto(data) {
     return e;
   }
 }
-// export async function getPhoto(id) {
-//   const data = await fetch(`${API_URL}/photos/${id}`);
-//   return await data.json();
-// }
-
-// // Create
-// export async function createPhoto(data) {
-//   const data_1 = await fetch(`${API_URL}/photos`, {
-//     method: 'POST',
-//     body: JSON.stringify(data),
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//   });
-//   return await data_1.json();
-// }
-
-// // Update
-// export async function patchPhoto(id, data) {
-//   try {
-//     const data_1 = await fetch(`${API_URL}/photos/${id}`, {
-//       method: 'PATCH',
-//       data: JSON.stringify(data),
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//     });
-//     return await data_1.json();
-//   } catch (err) {
-//     return console.log(err);
-//   }
-// }
-
-// // Delete
-// export async function deletePhoto(id, data) {
-//   const data_1 = await fetch(`${API_URL}/photos/${id}`, {
-//     method: 'DELETE',
-//     body: JSON.stringify(data),
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//   });
-//   return await data_1.json();
-// }
