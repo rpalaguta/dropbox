@@ -23,10 +23,9 @@
   display: none;
   justify-content: center;
   align-items: center;
+  z-index: 100;
 
   #popupContent {
-    width: 80%;
-    height: 60%;
     background-color: white;
     border-radius: 15px;
     position: relative;
@@ -41,6 +40,12 @@
       width: 20px;
       height: 20px;
       font-size: 20px;
+    }
+
+    .photo-edit-form {
+      input {
+        width: 50%;;
+      }
     }
 
     #userData {

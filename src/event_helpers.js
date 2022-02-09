@@ -11,3 +11,13 @@ export function onSearch(e, data, keys, callback) {
   });
   callback(filteredData);
 }
+
+export function onError(message) {
+  const alert = document.getElementById('alert');
+  alert.style.display = 'block';
+  alert.innerText = message;
+
+  setTimeout(() => {
+    alert.style.display = 'none';
+  }, 15000)
+}

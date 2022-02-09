@@ -1,5 +1,5 @@
 // CRUD = Create Read Update Delete
-
+import { onError } from './event_helpers.js';
 const API_URL = 'http://localhost:5000';
 
 // Read
@@ -8,7 +8,7 @@ export async function getPhotos(limit) {
     const res = await axios.get(`${API_URL}/photos?limit=${limit}`);
     return res.data;
   } catch (e) {
-    return e;
+    onError(e);
   }
 }
 
@@ -17,7 +17,7 @@ export async function getPhoto(id) {
     const res = await axios.get(`${API_URL}/photos/${id}`);
     return res.data;
   } catch (e) {
-    return e;
+    onError(e);
   }
 }
 
@@ -26,7 +26,7 @@ export async function patchPhoto(id, data) {
     const res = await axios.patch(`${API_URL}/photos/${id}`, data);
     return res.data;
   } catch (e) {
-    return e;
+    onError(e);
   }
 }
 
@@ -35,7 +35,16 @@ export async function deletePhoto(id, data) {
     const res = await axios.delete(`${API_URL}/photos/${id}`, data);
     return res.data;
   } catch (e) {
-    return e;
+    onError(e);
+  }
+}
+
+export async function deletePhotos(data) {
+  try {
+    const res = await axios.delete(`${API_URL}/photos`, { data });
+    return res.data;
+  } catch (e) {
+    onError(e);
   }
 }
 
@@ -48,6 +57,6 @@ export async function postPhoto(data) {
     });
     return res.data;
   } catch (e) {
-    return e;
+    onError(e);
   }
 }
