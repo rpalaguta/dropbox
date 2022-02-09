@@ -14,20 +14,36 @@
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
   display: none;
-  // overflow-y: auto;
+  overflow-y: auto;
   justify-content: center;
   align-items: center;
   #previewContent {
     overflow: hidden;
-    height: 60%;
-    width: 60%;
-    // height: fit-content;
-    background-size: cover;
-    max-height: 800px;
-    background-color: white;
+    max-height: 80%;
+    max-width: 80%;
+    height: fit-content;
+    width: fit-content;
     border-radius: 15px;
     position: relative;
-    padding: 20px;
+    #previewImg {
+      padding-top: 40px;
+      border-radius: 15px;
+      max-width: 100%;
+      height: auto;
+      overflow: hidden;
+    }
+    #closePopup {
+      position: absolute;
+      color: $light-blue-color;
+      // top: -px;
+      right: 0px;
+      width: 30px;
+      height: 30px;
+      font-size: 30px;
+      &:hover {
+        color: $light-gray;
+      }
+    }
   }
 }
 

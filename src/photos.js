@@ -77,7 +77,7 @@ const render = (arr) => {
     imageItem.addEventListener('dblclick', function () {
       const sphoto = getPhoto(this.id);
       document.getElementById('preview').style.display = 'flex';
-      document.getElementById('previewContent').style.backgroundImage = `url(${element.url})`;
+      document.getElementById('previewImg').src = `${element.url}`;
     });
   });
   // console.log(images);
@@ -88,6 +88,11 @@ const render = (arr) => {
 
 // render(images);
 render(photos);
+
+document.getElementById('closePopup').addEventListener('click', function () {
+  document.getElementById('preview').style.display = 'none';
+  document.getElementById('previewImg').src = `#`;
+});
 
 document.getElementById('delete').addEventListener('click', async function () {
   delList?.forEach(async (id) => {

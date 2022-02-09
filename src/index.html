@@ -6,7 +6,10 @@
   <body class="flex">
     <section class="flex w-100 h-100">@@include('parts/dropbox.html')</section>
     <div id="preview" class="preview">
-      <div id="previewContent"></div>
+      <div id="previewContent">
+        <i id="closePopup" class="fa fa-times" aria-hidden="true"></i>
+        <img id="previewImg"></img>
+      </div>
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script
